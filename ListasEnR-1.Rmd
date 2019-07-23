@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## ¿Que es una lista?
 
 Una lista es una estructura de datos u objeto que en R puede contener distintos tipos de datos.
-Desde vectores, arrays, matices e incluso otras listas. 
+Desde vectores, arrays, matrices e incluso otras listas. 
 
 ![](imagenes/6877996.jpg){height=400px}
 
@@ -20,6 +20,7 @@ Generalmente tenemos dos problemas con las listas...
 
 * Orden:
   Al poder contener tantas y tantos tipos de datos pueden volverse un caos díficil de entender.
+  
 * Manipulación:
   Extraer información puede requiere de selecciones consecuticas de los elementos:
 
@@ -35,9 +36,10 @@ mi.lista <- list(
   serie.de.numeros = 1:5,
   serie.de.letras = letters[20:25],
   una.matriz = matrix(sample(1:100, 20), ncol = 4),
-  otra.lista = list(item1 = "Este es un item", item2 = "Este es el segundo item")
+  otra.lista = list(
+    item1 = "Este es un item", item2 = "Este es el segundo item"
+  )
 )
-
 mi.lista
 ```
 

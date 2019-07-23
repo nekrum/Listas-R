@@ -1,0 +1,89 @@
+---
+title: "Ejercicios Listas I "
+output: html_notebook
+---
+
+Para resolver los ejercicios, necesitaras rellenar cada **chunck** de codigo con tu propia solución. Puedes apoyarte de
+los **chunck** de código en el documento.
+
+> Los chunck son los espacios en el documentos, rodeados por comillas invertidas \\` y que cuentan con una letra **r** 
+entre corchetes. En cada **chunck** puedes colocar el código que quieras y se ejecutará sobre el mismo notebook. 
+
+## Crea una lista manualmente
+
+Ejemplo:
+
+```{r}
+mi.lista <- list(
+  letras = letters[1:5],
+  numeros = 1:10,
+  texto = "Esto es solo un texto de ejemplo",
+  lista.anidada = list(item1 = "Un elemento", item2 = "Dos elementos")
+)
+```
+
+### Respuesta :
+
+```{r}
+
+```
+
+
+## Extrae elementos
+
+Extrae de tu lista el tercer elmento del segundo item:
+
+Ejemplo extrayendo el 4 elemento del primer item:
+
+```{r}
+mi.lista[[1]][4]
+```
+
+### Respuesta:
+
+```{r}
+
+```
+
+
+## Extrae una lista
+
+Con la siguiente lista `lista.ejercicio` extrae el 3 elemento com una lista:
+
+```{r}
+set.seed(20)
+lista.ejercicio <- sapply(
+  paste0("sujeto", 1:30),
+  function(x) data.frame(id.sujeto = x, presion = round(rnorm(20, mean = 100, sd = 1), 2)),
+  simplify = FALSE,
+  USE.NAMES = TRUE
+)
+lista.ejercicio
+```
+
+## Respuesta:
+
+```{r}
+
+```
+
+## Extran presión sanguinea
+
+
+Extrae la presión sanguinea del 4 sujeto para las 20 observaciones
+
+### Respuesta:
+
+```{r}
+
+```
+
+### Presión sanguinea
+
+
+Extrae la presión sanguínea del día 10 del sexto sujeto
+
+
+```{r}
+
+```

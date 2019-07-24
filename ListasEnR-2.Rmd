@@ -1,0 +1,94 @@
+---
+title: "Listas II"
+output: 
+  ioslides_presentation:
+    widescreen: true
+    transition: slower
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Familia Apply
+
+Son un conjunto  de funciones que permiten interactuar rápidamente con
+listas.
+Son prefereribles al uso de de `for` ya que tienen un desempeño mucho mayor que esta función.
+
+- apply
+- sapply
+- lapply
+- mapply
+- vapply
+- rapply
+
+> Tienen una sintaxis muy similar aunque **NO** es homogenia
+
+## Apply
+
+La primera de estas funciones permite aplicar una función a una dimensión del arreglo. 
+Requiere de tres argumentos: 
+
+- **X**: Array que se procesa
+- **Margin** La dimensión 1 es para renglones, 2 para columnas
+- **FUN** Función que se va a aplicar
+
+## Creamos un DF de pruebas
+
+```{r}
+mtcars.df <- as.data.frame(mtcars)
+str(mtcars.df)
+```
+
+## Apply en función
+
+```{r echo=TRUE}
+caracteristicas.modelo <- apply(mtcars.df, MARGIN = 2, FUN = function(x) paste(x, collapse = ","))
+caracteristicas.modelo
+```
+
+## Lapply
+
+Es una de las mas extendidas y el resultado siempre es una lista:
+
+```{r}
+promedio.stats <- lapply(
+  unique(mtcars.df$cyl),
+  function(x) c(
+    mean.hp = mean(mtcars.df[mtcars.df$cyl == x, "hp"]),
+    mean.mpg = mean(mtcars.df[mtcars.df$cyl == x, "mpg"]),
+    diff.gear = length(unique(mtcars.df[mtcars.df$cyl == x, "gear"]))
+  )
+)
+
+promedio.stats
+```
+
+## Sapply
+
+Esta función **simplifica** la salida del comando, en ocasiones puede ser útil. 
+Pero en otras ocasiones puede aplastar los datos.
+
+```{r}
+promedio.stats.simplificado <- sapply(
+  unique(mtcars.df$cyl),
+  function(x) c(
+    mean.hp = mean(mtcars.df[mtcars.df$cyl == x, "hp"]),
+    mean.mpg = mean(mtcars.df[mtcars.df$cyl == x, "mpg"]),
+    diff.gear = length(unique(mtcars.df[mtcars.df$cyl == x, "gear"]))
+  )
+)
+promedio.stats.simplificado
+```
+
+## Mapply
+
+Mapply permite aplicar un función a multiples vectores
+
+```{r}
+caracteristicas.legibles.modelo <- mapply(function(x, y) paste0("Tiene ", x, "de fuerza y da ", y, "por galón." ), mtcars.df$hp, mtcars.df$mpg)
+caracteristicas.legibles.modelo
+```
+
+

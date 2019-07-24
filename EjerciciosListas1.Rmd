@@ -6,7 +6,7 @@ output: html_notebook
 Para resolver los ejercicios, necesitaras rellenar cada **chunck** de codigo con tu propia solución. Puedes apoyarte de
 los **chunck** de código en el documento.
 
-> Los chunck son los espacios en el documentos, rodeados por comillas invertidas \\` y que cuentan con una letra **r** 
+> Los chunck son los espacios en el documentos, rodeados por comillas invertidas  y que cuentan con una letra **r** 
 entre corchetes. En cada **chunck** puedes colocar el código que quieras y se ejecutará sobre el mismo notebook. 
 
 ## Crea una lista manualmente

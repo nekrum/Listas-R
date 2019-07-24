@@ -1,13 +1,16 @@
 ---
 title: "Listas I"
-output: ioslides_presentation
+output: 
+  ioslides_presentation:
+    widescreen: true
+    transition: slower
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## ¿Que es una lista?
+## ¿Que es una lista? 
 
 Una lista es una estructura de datos u objeto que en R puede contener distintos tipos de datos.
 Desde vectores, arrays, matrices e incluso otras listas. 
@@ -26,7 +29,7 @@ Generalmente tenemos dos problemas con las listas...
 
 ![](imagenes/CO2_qPVWsAAErbv.png){width=600px}
 
-## ¿Como se Generan?
+## ¿Como se Generan? {.smaller}
 
 El comando `list()` nos permite generar una lista a mano
 
@@ -43,7 +46,7 @@ mi.lista <- list(
 mi.lista
 ```
 
-## Un mejor método
+## Un mejor método {.smaller}
 
 Sin embargo las listas se pueden generar de una función que las creé de forma automática. Lo que tiene mas sentido 
 en un lenguaje de programación
@@ -53,7 +56,7 @@ lista.raices.cuadradas <- lapply(2:5, function(x) x^2)
 lista.raices.cuadradas
 ```
 
-## Realmente Útiles
+## Realmente Útiles {.smaller}
 
 Se puede guardar un sujeto experimental por cada item de una lista y dentro de este guardar un dataframe con
 las mediciones experimentales del mismo.
@@ -121,5 +124,34 @@ Y por lo tanto para extraer una  elemento de una lista dentro de ptra lista, se 
 
 ```{r Una lista dentro de otra, echo = TRUE}
 mi.lista[["otra.lista"]][["item2"]]
+```
+
+## Función `as.list()` {.smaller}
+
+Esta función permite generar una lista a partir de otro elemento, y toma las partes de ese elemento para crear los
+items de las listas
+
+Lista manual:
+
+```{r Lista normal, echo = TRUE}
+list(1:3)
+```
+
+Usando `as.list()`
+
+```{r Usando as.list, echo = TRUE}
+as.list(1:3)
+```
+
+## DataFrame + `as.list()`
+
+En un **dataframe** toma cada columna como un elemento:
+
+```{r DataFrame de prueba, echo = TRUE}
+data.frame(a=1:3, b= 4:6)
+```
+
+```{r DataFrame con as.list, echo = TRUE}
+as.list(data.frame(a=1:3, b= 4:6))
 ```
 

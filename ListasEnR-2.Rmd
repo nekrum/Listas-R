@@ -8,6 +8,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+source("FuncionesParaListas.R")
 ```
 
 ## Familia Apply
@@ -77,7 +78,9 @@ promedio.stats.simplificado <- sapply(
     mean.hp = mean(mtcars.df[mtcars.df$cyl == x, "hp"]),
     mean.mpg = mean(mtcars.df[mtcars.df$cyl == x, "mpg"]),
     diff.gear = length(unique(mtcars.df[mtcars.df$cyl == x, "gear"]))
-  )
+  ),
+  USE.NAMES = T,
+  simplify = F
 )
 promedio.stats.simplificado
 ```
@@ -87,8 +90,10 @@ promedio.stats.simplificado
 Mapply permite aplicar un función a multiples vectores
 
 ```{r}
-caracteristicas.legibles.modelo <- mapply(function(x, y) paste0("Tiene ", x, "de fuerza y da ", y, "por galón." ), mtcars.df$hp, mtcars.df$mpg)
+caracteristicas.legibles.modelo <- mapply(
+  function(x, y) paste0("Tiene ", x, " de fuerza y da ", y, " por galón." ), 
+  mtcars.df$hp,
+  mtcars.df$mpg
+)
 caracteristicas.legibles.modelo
 ```
-
-
